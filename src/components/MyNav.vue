@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <div class="nav_left">
-      <MyButton>продать</MyButton>
+      <MyButton @click="console.log(sellState.changeClass)">продать</MyButton>
       <MyButton>купить</MyButton>
     </div>
     <div class="nav_right">
@@ -11,12 +11,21 @@
       </div>
     </div>
   </div>
+  <MySell :class="{ sells: sellState.classActive }"></MySell>
 </template>
 
 <script setup>
 import MyButton from '@/UI/MyButton.vue'
+
+import { sellStore } from '../stores/sell'
+import MySell from './MySell.vue'
+
+const sellState = sellStore()
 </script>
 <style lang="scss">
+.sells {
+  display: none;
+}
 .nav {
   display: flex;
   justify-content: space-between;

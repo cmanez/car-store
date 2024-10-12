@@ -3,12 +3,8 @@
     <MyNav></MyNav>
     <div class="item-grid">
       <MyItem></MyItem>
-      <MyItem></MyItem>
-      <MyItem></MyItem>
-      <MyItem></MyItem>
-      <MyItem></MyItem>
-      <MyItem></MyItem>
     </div>
+
     <MyFooter></MyFooter>
   </div>
 </template>
@@ -17,6 +13,8 @@
 import MyNav from '@/components/MyNav.vue'
 import MyFooter from '@/components/MyFooter.vue'
 import MyItem from '@/components/MyItem.vue'
+
+// const newClass = selectState.changeDisplay
 </script>
 
 <style lang="scss">

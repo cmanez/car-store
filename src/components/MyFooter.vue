@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <MyButton class="footer_btn">о компании</MyButton>
+    <MyButton>о компании</MyButton>
   </div>
 </template>
 
@@ -13,8 +13,5 @@ import MyButton from '@/UI/MyButton.vue'
   background-color: $main-red;
   height: 4rem;
   padding: 0 5% 0 5%;
-
-  &_btn {
-  }
 }
 </style>
