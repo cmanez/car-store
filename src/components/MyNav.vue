@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <div class="nav_left">
-      <MyButton @click="console.log(sellState.changeClass)">продать</MyButton>
+      <MyButton @click="sellState.changeClass">продать</MyButton>
       <MyButton>купить</MyButton>
     </div>
     <div class="nav_right">
@@ -11,7 +11,7 @@
       </div>
     </div>
   </div>
-  <MySell :class="{ sells: sellState.classActive }"></MySell>
+  <MySell :class="{ wrapper_sell: sellState.classActive }"></MySell>
 </template>
 
 <script setup>
@@ -23,9 +23,6 @@ import MySell from './MySell.vue'
 const sellState = sellStore()
 </script>
 <style lang="scss">
-.sells {
-  display: none;
-}
 .nav {
   display: flex;
   justify-content: space-between;

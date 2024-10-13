@@ -20,7 +20,6 @@
   font-size: 16px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  position: relative;
   transition: background-color 0.6s ease;
   overflow: hidden;
   &:after {

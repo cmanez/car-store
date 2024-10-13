@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import MyButton from '@/UI/MyButton.vue'
 </script>
 <style lang="scss">
