@@ -5,7 +5,12 @@
       <div class="sell_header">
         Продайте свой автомобиль, оставив объявление
         <div class="sell_header-close">
-          <img src="../assets/close.svg" alt="" class="sell_header-close-item" />
+          <img
+            @click="sellState.changeClass"
+            src="../assets/close.svg"
+            alt=""
+            class="sell_header-close-item"
+          />
         </div>
       </div>
       <div class="sell_car-option">

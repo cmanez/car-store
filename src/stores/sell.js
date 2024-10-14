@@ -1,12 +1,13 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const sellStore = defineStore('sell', () => {
-  const classActive = ref(false)
-
-  const changeClass = computed(() => {
-    return classActive.value === false ? (classActive.value = true) : (classActive.value = false)
-  })
+  const classActive = ref(true)
+  const changeClass = () => {
+    classActive.value = !classActive.value
+    console.log(classActive.value)
+    return classActive
+  }
 
   return {
     changeClass,

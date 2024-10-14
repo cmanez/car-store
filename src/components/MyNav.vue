@@ -11,13 +11,12 @@
       </div>
     </div>
   </div>
-  <MySell :class="{ wrapper_sell: sellState.classActive }"></MySell>
+  <MySell :class="{ sells: sellState.classActive }"></MySell>
 </template>
 
 <script setup>
 import MyButton from '@/UI/MyButton.vue'
-
-import { sellStore } from '../stores/sell'
+import { sellStore } from '../stores/sell.js'
 import MySell from './MySell.vue'
 
 const sellState = sellStore()
