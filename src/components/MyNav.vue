@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <div class="nav_left">
-      <MyButton @click="sellState.changeClass">продать</MyButton>
+      <MyButton @click="modalState.changeClass">продать</MyButton>
       <MyButton>купить</MyButton>
     </div>
     <div class="nav_right">
@@ -11,15 +11,15 @@
       </div>
     </div>
   </div>
-  <MySell :class="{ sells: sellState.classActive }"></MySell>
+  <MySell :class="{ modal_none: modalState.classActive }"></MySell>
 </template>
 
 <script setup>
 import MyButton from '@/UI/MyButton.vue'
-import { sellStore } from '../stores/sell.js'
+import { modalStore } from '../stores/modal.js'
 import MySell from './MySell.vue'
 
-const sellState = sellStore()
+const modalState = modalStore()
 </script>
 <style lang="scss">
 .nav {
