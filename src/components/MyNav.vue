@@ -1,8 +1,11 @@
 <template>
   <div class="nav">
     <div class="nav_left">
+      <MyButton @click="$router.push('/')">
+        <img src="@/assets/house.svg" alt="" />
+      </MyButton>
       <MyButton @click="modalState.changeClass">продать</MyButton>
-      <MyButton>купить</MyButton>
+      <MyButton @click="$router.push('/cars')">купить</MyButton>
     </div>
     <div class="nav_right">
       <div class="nav_right-auth">
@@ -23,10 +26,11 @@ const modalState = modalStore()
 </script>
 <style lang="scss">
 .nav {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   background-color: $main-red;
-  height: 4rem;
+  height: 7%;
   &_left {
     width: 30%;
     display: flex;

@@ -9,16 +9,15 @@
   display: flex;
   height: 67%;
   align-self: center;
-  padding: 16px 42px;
+  padding: 10px 20px;
   border-radius: 3px;
+  justify-content: center;
   box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.5);
-  /* line-height: 1.25; */
   background: #fc6e51;
   text-decoration: none;
   user-select: none;
-  color: white;
-  font-size: 16px;
-  letter-spacing: 0.08em;
+  color: $main-light;
+  letter-spacing: 0.08rem;
   text-transform: uppercase;
   transition: background-color 0.6s ease;
   overflow: hidden;

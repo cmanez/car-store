@@ -1,10 +1,9 @@
 <template>
   <div class="main-layout">
     <MyNav></MyNav>
-    <div class="item-grid">
-      <MyItem></MyItem>
+    <div class="main-layout-item">
+      <slot></slot>
     </div>
-
     <MyFooter></MyFooter>
   </div>
 </template>
@@ -12,7 +11,6 @@
 <script setup>
 import MyNav from '@/components/MyNav.vue'
 import MyFooter from '@/components/MyFooter.vue'
-import MyItem from '@/components/MyItem.vue'
 
 // const newClass = selectState.changeDisplay
 </script>
@@ -22,14 +20,10 @@ import MyItem from '@/components/MyItem.vue'
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  .item-grid {
-    display: grid;
-    height: 100%;
-    padding: 2rem;
-    grid-template-columns: repeat(auto-fill, 19%);
-    grid-template-rows: repeat(auto-fill, 30%);
-    gap: 10px;
+
+  &-item {
+    display: flex;
+    height: 86%;
   }
 }
 </style>
