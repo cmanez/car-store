@@ -11,7 +11,7 @@ import MyButton from '@/UI/MyButton.vue'
 .footer {
   display: flex;
   background-color: $main-red;
-  height: 7%;
+  height: 100%;
   padding: 0 5% 0 5%;
 }
 </style>

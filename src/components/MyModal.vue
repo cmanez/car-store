@@ -19,7 +19,7 @@ import { modalStore } from '../stores/modal'
 const modalState = modalStore()
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .modal_none {
   display: none;
 }

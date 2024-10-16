@@ -30,7 +30,7 @@ const modalState = modalStore()
   display: flex;
   justify-content: space-between;
   background-color: $main-red;
-  height: 7%;
+  height: 100%;
   &_left {
     width: 30%;
     display: flex;
