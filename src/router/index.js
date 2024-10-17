@@ -1,4 +1,5 @@
 import MainLayout from '../layouts/MainLayout.vue'
+import AboutView from '../views/AboutView.vue'
 import CarsView from '../views/CarsView.vue'
 import HomeView from '../views/HomeView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -18,6 +19,14 @@ const router = createRouter({
       component: CarsView,
       path: '/cars',
       name: 'cars',
+      meta: {
+        layout: MainLayout
+      }
+    },
+    {
+      component: AboutView,
+      path: '/about',
+      name: 'about',
       meta: {
         layout: MainLayout
       }

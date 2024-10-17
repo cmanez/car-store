@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <MyButton>о компании</MyButton>
+    <MyButton @click="$router.push('/about')">о компании</MyButton>
   </div>
 </template>
 

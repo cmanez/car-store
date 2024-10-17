@@ -1,5 +1,7 @@
 <template>
-  <a href="#" class="button" id="button"><slot></slot></a>
+  <a href="#" class="button" id="button">
+    <div class="sad"><slot></slot></div
+  ></a>
 </template>
 
 <script setup lang="ts"></script>
@@ -7,11 +9,10 @@
 <style lang="scss">
 .button {
   display: flex;
-  height: 67%;
   align-self: center;
-  padding: 10px 20px;
   border-radius: 3px;
   justify-content: center;
+  align-items: center;
   box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.5);
   background: #fc6e51;
   text-decoration: none;
@@ -21,6 +22,9 @@
   text-transform: uppercase;
   transition: background-color 0.6s ease;
   overflow: hidden;
+  .sad {
+    margin: 10px 20px;
+  }
   &:after {
     content: '';
     position: absolute;

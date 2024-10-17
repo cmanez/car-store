@@ -19,6 +19,7 @@
           Цена:
           <MyInput></MyInput>
         </div>
+        <MyButton>Разместить</MyButton>
       </div>
     </div>
   </MyModal>
@@ -27,12 +28,13 @@
 <script setup>
 import MyInput from '@/UI/MyInput.vue'
 import MySelect from '../UI/MySelect.vue'
+import MyButton from '@/UI/MyButton.vue'
 import MyModal from './MyModal.vue'
 </script>
 
 <style lang="scss">
-.modal_none {
-  display: none !important;
+.sell_none {
+  display: none;
 }
 .wrapper_sell {
   display: flex;

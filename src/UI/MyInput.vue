@@ -4,4 +4,8 @@
 
 <script setup lang="ts"></script>
 
-<style></style>
+<style>
+input {
+  width: 100%;
+}
+</style>

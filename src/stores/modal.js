@@ -2,15 +2,16 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const modalStore = defineStore('sell', () => {
-  const classActive = ref(true)
-  const changeClass = () => {
-    classActive.value = !classActive.value
-    console.log(classActive.value)
-    return classActive
+  const modalName = ref(null)
+  const modalVisible = (className) => {
+    modalName.value = className
   }
-
+  const modalClose = () => {
+    modalName.value = null
+  }
   return {
-    changeClass,
-    classActive
+    modalVisible,
+    modalClose,
+    modalName
   }
 })
