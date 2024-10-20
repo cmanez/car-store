@@ -4,22 +4,22 @@
       <span>Регистрация</span>
       <div class="sign-form_item">
         <span class="sign-form_item_text"> Логин:</span>
-        <div class="sign-form_item_input"><MyInput></MyInput></div>
+        <div class="sign-form_item_input"><MyInput v-model="login" id=""></MyInput></div>
       </div>
 
       <div class="sign-form_item">
         <span class="sign-form_item_text">Пароль:</span>
-        <div class="sign-form_item_input"><MyInput></MyInput></div>
+        <div class="sign-form_item_input"><MyInput v-model="password" id=""></MyInput></div>
       </div>
 
       <div class="sign-form_item">
         <span class="sign-form_item_text">Повторите пароль:</span>
-        <div class="sign-form_item_input"><MyInput></MyInput></div>
+        <div class="sign-form_item_input"><MyInput id=""></MyInput></div>
       </div>
 
       <div class="sign-form_item">
         <span class="sign-form_item_text">Электронная почта:</span>
-        <div class="sign-form_item_input"><MyInput></MyInput></div>
+        <div class="sign-form_item_input"><MyInput v-model="email" id=""></MyInput></div>
       </div>
       <div><MyButton>Зарегистрироваться</MyButton></div>
     </div>
@@ -29,6 +29,11 @@
 import MyModal from './MyModal.vue'
 import MyInput from '@/UI/MyInput.vue'
 import MyButton from '@/UI/MyButton.vue'
+import { ref } from 'vue'
+
+const login = ref('')
+const password = ref('')
+const email = ref('')
 </script>
 
 <style lang="scss">

@@ -1,8 +1,12 @@
 <template>
-  <input type="text" name="" id="" />
+  <input type="text" v-model="model" />
 </template>
 
-<script setup lang="ts"></script>
+<script setup>
+const model = defineModel({
+  type: String
+})
+</script>
 
 <style>
 input {
