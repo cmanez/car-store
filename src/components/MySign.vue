@@ -4,7 +4,16 @@
       <span>Регистрация</span>
       <div class="sign-form_item">
         <span class="sign-form_item_text"> Логин:</span>
-        <div class="sign-form_item_input"><MyInput v-model="signState.login" id=""></MyInput></div>
+        <div class="sign-form_item_input">
+          <MyInput
+            v-model="signState.login"
+            id=""
+            :class="{
+              validpass: signState.checkValideLogin,
+              invalidpass: signState.checkValideLogin === false
+            }"
+          ></MyInput>
+        </div>
       </div>
 
       <div class="sign-form_item">
@@ -15,9 +24,11 @@
             @click="console.log(signState.checkConfirmPassword)"
             id=""
             :class="{
-              validpass: signState.checkConfirmPassword === true,
+              validpass: signState.checkConfirmPassword,
               invalidpass: signState.checkConfirmPassword === false
             }"
+            type="password"
+            required
           ></MyInput>
         </div>
       </div>
@@ -29,10 +40,12 @@
           <MyInput
             id=""
             :class="{
-              validpass: signState.checkConfirmPassword === true,
+              validpass: signState.checkConfirmPassword,
               invalidpass: signState.checkConfirmPassword === false
             }"
             v-model="signState.confirmPassword"
+            required
+            type="password"
           ></MyInput>
         </div>
       </div>
@@ -43,10 +56,29 @@
           <MyInput
             id=""
             :class="{
-              validpass: signState.checkValideEmail === true,
+              validpass: signState.checkValideEmail,
               invalidpass: signState.checkValideEmail === false
             }"
             v-model="signState.email"
+            required
+            type="email"
+          ></MyInput>
+        </div>
+      </div>
+      <div class="sign-form_item">
+        <span class="sign-form_item_text">Телефон:</span>
+        <div class="sign-form_item_input">
+          <MyInput
+            id=""
+            v-model="signState.phoneNum"
+            name="slkada"
+            required
+            @input="signState.phoneAddPlus"
+            :class="{
+              validpass: signState.checkValidePhone,
+              invalidpass: signState.checkValidePhone === false
+            }"
+            maxlength="12"
           ></MyInput>
         </div>
       </div>

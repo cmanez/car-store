@@ -5,12 +5,19 @@ export const signStore = defineStore('sign', () => {
   const login = ref('')
   const email = ref('')
   const password = ref('')
+  const phoneNum = ref('')
   const confirmPassword = ref('')
   const classPasswordChange = ref(null)
   const clickToCheck = ref(false)
 
   const startCheckValid = () => {
     clickToCheck.value = true
+  }
+
+  const phoneAddPlus = () => {
+    if (phoneNum.value.indexOf('+') === -1) {
+      phoneNum.value = '+7' + phoneNum.value
+    }
   }
 
   const checkConfirmPassword = computed(() => {
@@ -33,14 +40,27 @@ export const signStore = defineStore('sign', () => {
       : null
   })
 
+  const checkValideLogin = computed(() => {
+    return clickToCheck.value ? /^[a-z0-9_-]{3,16}$/.test(login.value) : null
+  })
+  const checkValidePhone = computed(() => {
+    return clickToCheck.value
+      ? /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/.test(phoneNum.value)
+      : null
+  })
+
   return {
     checkConfirmPassword,
-    startCheckValid,
+    checkValidePhone,
     password,
     confirmPassword,
     login,
     email,
     checkValideEmail,
-    checkStrongPassword
+    checkStrongPassword,
+    checkValideLogin,
+    phoneNum,
+    startCheckValid,
+    phoneAddPlus
   }
 })
