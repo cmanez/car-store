@@ -7,19 +7,26 @@
           Загрузите фото
           <MyInput type="file"></MyInput>
         </div>
-        <div class="sell_car-option">
+        <div v-if="autoArrayState.checkArrayLength === false">Загрузка...</div>
+        <div v-else class="sell_car-option">
           Модель автомобиля:
-          <MySelect></MySelect>
+          <MySelect v-model="carModel"
+            ><option value="" disabled selected>Выберите марку:</option>
+
+            <option v-for="car in autoArrayState.carsArray" :key="car.id">
+              {{ car.name }}
+            </option>
+          </MySelect>
         </div>
         <div class="sell_car-option">
-          Пробег:
-          <MyInput></MyInput>
+          Пробег (км):
+          <MyInput type="number"></MyInput>
         </div>
         <div class="sell_car-option">
-          Цена:
-          <MyInput></MyInput>
+          Цена (в рублях):
+          <MyInput type="number"></MyInput>
         </div>
-        <MyButton>Разместить</MyButton>
+        <MyButton @click="console.log(autoArrayState.getArray)">Разместить</MyButton>
       </div>
     </div>
   </MyModal>
@@ -30,6 +37,12 @@ import MyInput from '@/UI/MyInput.vue'
 import MySelect from '../UI/MySelect.vue'
 import MyButton from '@/UI/MyButton.vue'
 import MyModal from './MyModal.vue'
+import { ref } from 'vue'
+
+import { autoArrayStore } from '../stores/auto_array'
+
+const autoArrayState = autoArrayStore()
+const carModel = ref()
 </script>
 
 <style lang="scss">
@@ -39,7 +52,7 @@ import MyModal from './MyModal.vue'
 .wrapper_sell {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-cars: center;
   width: 100%;
   height: 100%;
 }
@@ -54,7 +67,11 @@ import MyModal from './MyModal.vue'
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-cars: center;
+    &-car {
+      height: 100px;
+      width: 100px;
+    }
   }
 }
 </style>

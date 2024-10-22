@@ -1,7 +1,18 @@
 <template>
-  <select name="" id=""></select>
+  <select name="" id="" class="select" v-model="model">
+    <slot></slot>
+  </select>
 </template>
 
-<script setup lang="ts"></script>
+<script setup>
+import { defineModel } from 'vue'
+const model = defineModel({
+  type: Array
+})
+</script>
 
-<style></style>
+<style>
+.select {
+  width: 100%;
+}
+</style>

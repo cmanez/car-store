@@ -21,7 +21,6 @@
         <div class="sign-form_item_input">
           <MyInput
             v-model="signState.password"
-            @click="console.log(signState.checkConfirmPassword)"
             id=""
             :class="{
               validpass: signState.checkConfirmPassword,
@@ -71,7 +70,6 @@
           <MyInput
             id=""
             v-model="signState.phoneNum"
-            name="slkada"
             required
             @input="signState.phoneAddPlus"
             :class="{
