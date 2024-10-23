@@ -6,9 +6,7 @@
 
 <script setup>
 import { defineModel } from 'vue'
-const model = defineModel({
-  type: Array
-})
+const model = defineModel({})
 </script>
 
 <style>

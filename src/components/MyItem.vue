@@ -1,12 +1,16 @@
 <template>
-  <div class="item">
+  <div class="item" v-for="item in autoArrayState.itemCarArray" :key="item.model">
     <div class="item_car-pic"><img src="@/assets/img/car.webp" alt="" /></div>
-    <div class="item_car-model">Модель:</div>
-    <div class="item_car-price">Цена:</div>
+    <div class="item_car-model">Модель: {{ item.model }}</div>
+    <div class="item_car-price">Цена: {{ item.price }}</div>
+    <div class="item_car-price">Пробег: {{ item.mileage }}</div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { autoArrayStore } from '../stores/auto_array'
+const autoArrayState = autoArrayStore()
+</script>
 <style lang="scss">
 .item {
   display: flex;

@@ -20,13 +20,15 @@
         </div>
         <div class="sell_car-option">
           Пробег (км):
-          <MyInput type="number"></MyInput>
+          <MyInput type="number" v-model="carMileage"></MyInput>
         </div>
         <div class="sell_car-option">
           Цена (в рублях):
-          <MyInput type="number"></MyInput>
+          <MyInput type="number" v-model="carPrice"></MyInput>
         </div>
-        <MyButton @click="console.log(autoArrayState.getArray)">Разместить</MyButton>
+        <MyButton @click="autoArrayState.newItem(carModel, carPrice, carMileage)"
+          >Разместить</MyButton
+        >
       </div>
     </div>
   </MyModal>
@@ -37,12 +39,18 @@ import MyInput from '@/UI/MyInput.vue'
 import MySelect from '../UI/MySelect.vue'
 import MyButton from '@/UI/MyButton.vue'
 import MyModal from './MyModal.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 import { autoArrayStore } from '../stores/auto_array'
 
 const autoArrayState = autoArrayStore()
 const carModel = ref()
+const carPrice = ref()
+const carMileage = ref()
+
+onMounted(() => {
+  autoArrayState.sortCars
+})
 </script>
 
 <style lang="scss">
@@ -52,7 +60,7 @@ const carModel = ref()
 .wrapper_sell {
   display: flex;
   justify-content: center;
-  align-cars: center;
+  align-items: center;
   width: 100%;
   height: 100%;
 }
@@ -67,7 +75,7 @@ const carModel = ref()
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-cars: center;
+    align-items: center;
     &-car {
       height: 100px;
       width: 100px;

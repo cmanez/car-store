@@ -3,9 +3,7 @@
 </template>
 
 <script setup>
-const model = defineModel({
-  type: String
-})
+const model = defineModel({})
 </script>
 
 <style>
