@@ -47,7 +47,6 @@ export const autoArrayStore = defineStore('auto', () => {
     newItem,
     itemCarArray,
     newCarArray,
-    notEnoughData,
-    setCarsArray
+    notEnoughData
   }
 })
