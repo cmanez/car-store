@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper-modal">
     <div class="background" @click="modalState.modalClose"></div>
     <div class="modal">
       <img
@@ -23,7 +23,7 @@ const modalState = modalStore()
 .modal_none {
   display: none;
 }
-.wrapper {
+.wrapper-modal {
   position: absolute;
   width: 100%;
   height: 100%;

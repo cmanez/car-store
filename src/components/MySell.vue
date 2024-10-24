@@ -20,11 +20,23 @@
         </div>
         <div class="sell_car-option">
           Пробег (км):
-          <MyInput type="number" v-model="carMileage"></MyInput>
+          <MyInput
+            type="number"
+            v-model="carMileage"
+            :class="{
+              invalidpass: autoArrayState.notEnoughData === true
+            }"
+          ></MyInput>
         </div>
         <div class="sell_car-option">
           Цена (в рублях):
-          <MyInput type="number" v-model="carPrice"></MyInput>
+          <MyInput
+            type="number"
+            v-model="carPrice"
+            :class="{
+              invalidpass: autoArrayState.notEnoughData === true
+            }"
+          ></MyInput>
         </div>
         <MyButton @click="autoArrayState.newItem(carModel, carPrice, carMileage)"
           >Разместить</MyButton

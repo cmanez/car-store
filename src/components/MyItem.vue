@@ -1,9 +1,20 @@
 <template>
   <div class="item" v-for="item in autoArrayState.itemCarArray" :key="item.model">
     <div class="item_car-pic"><img src="@/assets/img/car.webp" alt="" /></div>
-    <div class="item_car-model">Модель: {{ item.model }}</div>
-    <div class="item_car-price">Цена: {{ item.price }}</div>
-    <div class="item_car-price">Пробег: {{ item.mileage }}</div>
+    <div class="item_car-info">
+      <div class="item_car-info-properties">
+        <div class="item_car-info-properties-prop">Модель: {{ item.model }}</div>
+        <div class="item_car-info-properties-prop" @click="uploadItems()">
+          Цена: {{ item.price }}
+        </div>
+        <div class="item_car-info-properties-prop" @click="autoArrayState.setCarsArray()">
+          Пробег: {{ item.mileage }}
+        </div>
+      </div>
+      <div class="item_car-info-delete" @click="autoArrayState.newCarArray(item.id)">
+        <img src="../assets/close.svg" alt="" class="modal_close-item" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -30,11 +41,30 @@ const autoArrayState = autoArrayStore()
       height: 100%;
     }
   }
-  &_car-model {
-    height: 20%;
-  }
-  &_car-price {
-    height: 20%;
+
+  &_car-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    &-properties {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      &-prop {
+        height: 20%;
+      }
+    }
+    &-delete {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      width: 30px;
+      transition: 0.2s;
+    }
+    &-delete:hover {
+      transform: scale(1.25);
+      transition: 0.2s;
+    }
   }
 }
 </style>

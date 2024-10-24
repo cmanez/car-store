@@ -8,7 +8,7 @@ export const autoArrayStore = defineStore('auto', () => {
     { name: 'hyuindai', id: 4 },
     { name: 'BMW', id: 5 }
   ])
-
+  const notEnoughData = ref(false)
   const itemCarArray = ref([])
   const sortCarsArray = ref([])
 
@@ -24,15 +24,30 @@ export const autoArrayStore = defineStore('auto', () => {
   })
 
   const newItem = (model, price, mileage) => {
-    itemCarArray.value.push({ model, price, mileage })
+    if (model && price && mileage) {
+      const id = Date.now()
+      itemCarArray.value.push({ model, price, mileage, id })
+      notEnoughData.value = false
+    } else {
+      return (notEnoughData.value = true)
+    }
   }
 
+  const newCarArray = (id) => {
+    itemCarArray.value = itemCarArray.value.filter((item) => item.id !== id)
+  }
+  // const setCarsArray = () => {
+  //   localStorage.setItem('testarray', JSON.stringify(itemCarArray.value))
+  // }
   return {
     carsArray,
     checkArrayLength,
     sortCarsArray,
     sortCars,
     newItem,
-    itemCarArray
+    itemCarArray,
+    newCarArray,
+    notEnoughData,
+    setCarsArray
   }
 })
