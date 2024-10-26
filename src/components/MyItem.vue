@@ -7,9 +7,7 @@
         <div class="item_car-info-properties-prop" @click="uploadItems()">
           Цена: {{ item.price }}
         </div>
-        <div class="item_car-info-properties-prop" @click="autoArrayState.setCarsArray()">
-          Пробег: {{ item.mileage }}
-        </div>
+        <div class="item_car-info-properties-prop">Пробег: {{ item.mileage }}</div>
       </div>
       <div class="item_car-info-delete" @click="autoArrayState.newCarArray(item.id)">
         <img src="../assets/close.svg" alt="" class="modal_close-item" />

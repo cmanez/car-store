@@ -6,6 +6,14 @@
 
 <script setup>
 import MyItem from '@/components/MyItem.vue'
+
+import { onMounted } from 'vue'
+import { autoArrayStore } from '@/stores/auto_array'
+const autoArrayState = autoArrayStore()
+
+onMounted(() => {
+  autoArrayState.uploadCarItems()
+})
 </script>
 
 <style lang="scss">

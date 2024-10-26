@@ -1,6 +1,6 @@
 <template>
   <a href="#" class="button" id="button">
-    <div class="sad"><slot></slot></div
+    <div class="btn"><slot></slot></div
   ></a>
 </template>
 
@@ -22,7 +22,7 @@
   text-transform: uppercase;
   transition: background-color 0.6s ease;
   overflow: hidden;
-  .sad {
+  .btn {
     margin: 10px 20px;
   }
   &:after {

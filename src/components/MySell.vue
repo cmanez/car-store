@@ -38,7 +38,10 @@
             }"
           ></MyInput>
         </div>
-        <MyButton @click="autoArrayState.newItem(carModel, carPrice, carMileage)"
+        <MyButton
+          @click="
+            autoArrayState.newItem(carModel, carPrice, carMileage), autoArrayState.setCarsArray
+          "
           >Разместить</MyButton
         >
       </div>

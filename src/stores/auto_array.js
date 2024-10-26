@@ -14,7 +14,7 @@ export const autoArrayStore = defineStore('auto', () => {
 
   const sortCars = computed(() => {
     carsArray.value.sort((a, b) => {
-      return a.name.localeCompare(b.name.toLocaleLowerCase())
+      return a.name.localeCompare(b.name.toLowerCase())
     })
     return carsArray
   })
@@ -34,11 +34,20 @@ export const autoArrayStore = defineStore('auto', () => {
   }
 
   const newCarArray = (id) => {
-    itemCarArray.value = itemCarArray.value.filter((item) => item.id !== id)
+    itemCarArray.value = itemCarArray.value.filter((item) => item.id !== id) //удаление элементов из массива и localstorage
+    localStorage.setItem('carsarray', JSON.stringify(itemCarArray.value))
   }
-  // const setCarsArray = () => {
-  //   localStorage.setItem('testarray', JSON.stringify(itemCarArray.value))
-  // }
+  const setCarsArray = computed(() => {
+    return localStorage.setItem('carsarray', JSON.stringify(itemCarArray.value))
+  })
+
+  const uploadCarItems = () => {
+    //загрузка элементов из localStorage
+    if (localStorage.getItem('carsarray')) {
+      const carParse = JSON.parse(localStorage.getItem('carsarray'))
+      carParse !== itemCarArray.value ? (itemCarArray.value = carParse) : 0
+    }
+  }
   return {
     carsArray,
     checkArrayLength,
@@ -47,6 +56,8 @@ export const autoArrayStore = defineStore('auto', () => {
     newItem,
     itemCarArray,
     newCarArray,
-    notEnoughData
+    notEnoughData,
+    setCarsArray,
+    uploadCarItems
   }
 })
