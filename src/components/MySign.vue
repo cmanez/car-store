@@ -7,7 +7,6 @@
         <div class="sign-form_item_input">
           <MyInput
             v-model="signState.login"
-            id=""
             :class="{
               validpass: signState.checkValideLogin,
               invalidpass: signState.checkValideLogin === false
@@ -21,7 +20,6 @@
         <div class="sign-form_item_input">
           <MyInput
             v-model="signState.password"
-            id=""
             :class="{
               validpass: signState.checkConfirmPassword,
               invalidpass: signState.checkConfirmPassword === false
@@ -37,7 +35,6 @@
         <div class="sign-form_item_input">
           <!-- {{ signState. }} -->
           <MyInput
-            id=""
             :class="{
               validpass: signState.checkConfirmPassword,
               invalidpass: signState.checkConfirmPassword === false
@@ -53,7 +50,6 @@
         <span class="sign-form_item_text">Электронная почта:</span>
         <div class="sign-form_item_input">
           <MyInput
-            id=""
             :class="{
               validpass: signState.checkValideEmail,
               invalidpass: signState.checkValideEmail === false
@@ -68,10 +64,9 @@
         <span class="sign-form_item_text">Телефон:</span>
         <div class="sign-form_item_input">
           <MyInput
-            id=""
             v-model="signState.phoneNum"
             required
-            @input="signState.phoneAddPlus"
+            @input="signState.phoneAddPlus()"
             :class="{
               validpass: signState.checkValidePhone,
               invalidpass: signState.checkValidePhone === false
@@ -88,7 +83,7 @@
 import MyModal from './MyModal.vue'
 import MyInput from '@/UI/MyInput.vue'
 import MyButton from '@/UI/MyButton.vue'
-// import { ref } from 'vue'
+
 import { signStore } from '@/stores/signin'
 
 // const password = ref('')

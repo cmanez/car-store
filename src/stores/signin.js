@@ -10,6 +10,16 @@ export const signStore = defineStore('sign', () => {
   const classPasswordChange = ref(null)
   const clickToCheck = ref(false)
 
+  const clearInput = () => {
+    login.value = ''
+    email.value = ''
+    password.value = ''
+    phoneNum.value = ''
+    confirmPassword.value = ''
+    classPasswordChange.value = null
+    clickToCheck.value = false
+  }
+
   const startCheckValid = () => {
     clickToCheck.value = true
   }
@@ -61,6 +71,7 @@ export const signStore = defineStore('sign', () => {
     checkValideLogin,
     phoneNum,
     startCheckValid,
-    phoneAddPlus
+    phoneAddPlus,
+    clearInput
   }
 })

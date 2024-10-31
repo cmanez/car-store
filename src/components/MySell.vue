@@ -38,9 +38,25 @@
             }"
           ></MyInput>
         </div>
+        <div class="sell_car-option">
+          Контактный номер телефона:
+          <MyInput
+            v-model="signState.phoneNum"
+            required
+            @input="signState.phoneAddPlus()"
+            @click="console.log(localPhoneNum), console.log(signState.phoneNum)"
+            :class="{
+              validpass: signState.checkValidePhone,
+              invalidpass: signState.checkValidePhone === false
+            }"
+            maxlength="12"
+          ></MyInput>
+        </div>
         <MyButton
           @click="
-            autoArrayState.newItem(carModel, carPrice, carMileage), autoArrayState.setCarsArray
+            autoArrayState.newItem(carModel, carPrice, carMileage, signState.phoneNum),
+              autoArrayState.setCarsArray,
+              signState.startCheckValid()
           "
           >Разместить</MyButton
         >
@@ -51,17 +67,21 @@
 
 <script setup>
 import MyInput from '@/UI/MyInput.vue'
-import MySelect from '../UI/MySelect.vue'
+import MySelect from '@/UI/MySelect.vue'
 import MyButton from '@/UI/MyButton.vue'
 import MyModal from './MyModal.vue'
 import { onMounted, ref } from 'vue'
 
-import { autoArrayStore } from '../stores/auto_array'
+import { autoArrayStore } from '@/stores/auto_array'
+import { signStore } from '@/stores/signin'
 
+const signState = signStore()
 const autoArrayState = autoArrayStore()
+
 const carModel = ref()
 const carPrice = ref()
 const carMileage = ref()
+const localPhoneNum = ref('')
 
 onMounted(() => {
   autoArrayState.sortCars

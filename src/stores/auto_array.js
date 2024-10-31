@@ -13,6 +13,7 @@ export const autoArrayStore = defineStore('auto', () => {
   const sortCarsArray = ref([])
 
   const sortCars = computed(() => {
+    // сортировка марок автомобилей по алфавиту
     carsArray.value.sort((a, b) => {
       return a.name.localeCompare(b.name.toLowerCase())
     })
@@ -20,13 +21,15 @@ export const autoArrayStore = defineStore('auto', () => {
   })
 
   const checkArrayLength = computed(() => {
+    // проверка наличия элементов массива с марками автомобилей
     return carsArray.value.length ? true : false
   })
 
-  const newItem = (model, price, mileage) => {
-    if (model && price && mileage) {
+  const newItem = (model, price, mileage, phoneNum) => {
+    //создание элемента массива
+    if (model && price && mileage && phoneNum) {
       const id = Date.now()
-      itemCarArray.value.push({ model, price, mileage, id })
+      itemCarArray.value.push({ model, price, mileage, id, phoneNum })
       notEnoughData.value = false
     } else {
       return (notEnoughData.value = true)
@@ -34,7 +37,7 @@ export const autoArrayStore = defineStore('auto', () => {
   }
 
   const newCarArray = (id) => {
-    itemCarArray.value = itemCarArray.value.filter((item) => item.id !== id) //удаление элементов из массива и localstorage
+    itemCarArray.value = itemCarArray.value.filter((item) => item.id !== id) //удаление элементов из массива и localstorage по id
     localStorage.setItem('carsarray', JSON.stringify(itemCarArray.value))
   }
   const setCarsArray = computed(() => {

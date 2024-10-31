@@ -27,7 +27,6 @@ const modalState = modalStore()
   position: absolute;
   width: 100%;
   height: 100%;
-
   .background {
     background-color: black;
     opacity: 0.5;
