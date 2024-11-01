@@ -23,6 +23,7 @@
           <MyInput
             type="number"
             v-model="carMileage"
+            maxlength="8"
             :class="{
               invalidpass: autoArrayState.notEnoughData === true
             }"
@@ -33,6 +34,7 @@
           <MyInput
             type="number"
             v-model="carPrice"
+            maxlength="10"
             :class="{
               invalidpass: autoArrayState.notEnoughData === true
             }"
@@ -44,7 +46,6 @@
             v-model="signState.phoneNum"
             required
             @input="signState.phoneAddPlus()"
-            @click="console.log(localPhoneNum), console.log(signState.phoneNum)"
             :class="{
               validpass: signState.checkValidePhone,
               invalidpass: signState.checkValidePhone === false
@@ -52,14 +53,7 @@
             maxlength="12"
           ></MyInput>
         </div>
-        <MyButton
-          @click="
-            autoArrayState.newItem(carModel, carPrice, carMileage, signState.phoneNum),
-              autoArrayState.setCarsArray,
-              signState.startCheckValid()
-          "
-          >Разместить</MyButton
-        >
+        <MyButton @click="handleClick()">Разместить</MyButton>
       </div>
     </div>
   </MyModal>
@@ -74,15 +68,25 @@ import { onMounted, ref } from 'vue'
 
 import { autoArrayStore } from '@/stores/auto_array'
 import { signStore } from '@/stores/signin'
+import { modalStore } from '@/stores/modal'
 
 const signState = signStore()
 const autoArrayState = autoArrayStore()
+const modalState = modalStore()
 
 const carModel = ref()
 const carPrice = ref()
 const carMileage = ref()
-const localPhoneNum = ref('')
 
+const checkBeforeClose = () => {
+  autoArrayState.notEnoughData ? 0 : modalState.modalClose()
+}
+const handleClick = () => {
+  autoArrayState.newItem(carModel, carPrice, carMileage, signState.phoneNum),
+    autoArrayState.setCarsArray,
+    signState.startCheckValid(),
+    checkBeforeClose()
+}
 onMounted(() => {
   autoArrayState.sortCars
 })

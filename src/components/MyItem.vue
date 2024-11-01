@@ -81,13 +81,13 @@ const autoArrayState = autoArrayStore()
       transition: 0.2s;
     }
     &-delete:hover {
-      transform: scale(1.25);
+      transform: scale(1.1);
       transition: 0.2s;
     }
   }
 }
 .item:hover {
-  scale: 1.1;
+  scale: 1.03;
   transition: 0.2s;
 }
 </style>

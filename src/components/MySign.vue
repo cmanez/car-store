@@ -21,8 +21,8 @@
           <MyInput
             v-model="signState.password"
             :class="{
-              validpass: signState.checkConfirmPassword,
-              invalidpass: signState.checkConfirmPassword === false
+              validpass: signState.checkConfirmPassword && signState.password,
+              invalidpass: signState.checkConfirmPassword === false && !signState.password
             }"
             type="password"
             required
@@ -36,8 +36,8 @@
           <!-- {{ signState. }} -->
           <MyInput
             :class="{
-              validpass: signState.checkConfirmPassword,
-              invalidpass: signState.checkConfirmPassword === false
+              validpass: signState.checkConfirmPassword && signState.confirmPassword,
+              invalidpass: signState.checkConfirmPassword === false && !signState.confirmPassword
             }"
             v-model="signState.confirmPassword"
             required
@@ -75,7 +75,9 @@
           ></MyInput>
         </div>
       </div>
-      <div><MyButton @click="signState.startCheckValid">Зарегистрироваться</MyButton></div>
+      <div>
+        <MyButton @click="handleClick()">Зарегистрироваться</MyButton>
+      </div>
     </div>
   </MyModal>
 </template>
@@ -83,13 +85,19 @@
 import MyModal from './MyModal.vue'
 import MyInput from '@/UI/MyInput.vue'
 import MyButton from '@/UI/MyButton.vue'
-
+import { modalStore } from '../stores/modal'
 import { signStore } from '@/stores/signin'
 
-// const password = ref('')
-// const confrimPassword = ref('')
-
 const signState = signStore()
+const modalState = modalStore()
+
+const checkBeforeClose = () => {
+  signState.checkFieldsValues() ? modalState.modalClose() : 0
+}
+const handleClick = () => {
+  signState.startCheckValid()
+  checkBeforeClose()
+}
 </script>
 
 <style lang="scss">
