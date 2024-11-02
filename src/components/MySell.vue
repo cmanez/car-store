@@ -5,7 +5,7 @@
         <div class="sell_header">Продайте свой автомобиль, оставив объявление</div>
         <div class="sell_car-option">
           Загрузите фото
-          <MyInput type="file"></MyInput>
+          <MyInput type="file" v-model="carPhoto"></MyInput>
         </div>
         <div v-if="autoArrayState.checkArrayLength === false">Загрузка...</div>
         <div v-else class="sell_car-option">
@@ -21,7 +21,6 @@
         <div class="sell_car-option">
           Пробег (км):
           <MyInput
-            type="number"
             v-model="carMileage"
             maxlength="8"
             :class="{
@@ -32,7 +31,6 @@
         <div class="sell_car-option">
           Цена (в рублях):
           <MyInput
-            type="number"
             v-model="carPrice"
             maxlength="10"
             :class="{
@@ -77,6 +75,7 @@ const modalState = modalStore()
 const carModel = ref()
 const carPrice = ref()
 const carMileage = ref()
+const carPhoto = ref()
 
 const checkBeforeClose = () => {
   autoArrayState.notEnoughData ? 0 : modalState.modalClose()

@@ -51,16 +51,17 @@ export const autoArrayStore = defineStore('auto', () => {
       carParse !== itemCarArray.value ? (itemCarArray.value = carParse) : 0
     }
   }
+
   return {
     carsArray,
     checkArrayLength,
     sortCarsArray,
     sortCars,
-    newItem,
     itemCarArray,
-    newCarArray,
     notEnoughData,
     setCarsArray,
+    newCarArray,
+    newItem,
     uploadCarItems
   }
 })
