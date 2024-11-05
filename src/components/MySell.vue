@@ -2,7 +2,9 @@
   <MyModal>
     <div class="wrapper_sell">
       <div class="sell">
-        <div class="sell_header">Продайте свой автомобиль, оставив объявление</div>
+        <div class="sell_header" @click="signState.testCheck()">
+          Продайте свой автомобиль, оставив объявление
+        </div>
         <div class="sell_car-option">
           Загрузите фото
           <MyInput type="file" v-model="carPhoto"></MyInput>
@@ -22,7 +24,8 @@
           Пробег (км):
           <MyInput
             v-model="carMileage"
-            maxlength="8"
+            v-imask="{ mask: Number }"
+            maxLength="8"
             :class="{
               invalidpass: autoArrayState.notEnoughData === true
             }"
@@ -32,7 +35,8 @@
           Цена (в рублях):
           <MyInput
             v-model="carPrice"
-            maxlength="10"
+            v-imask="{ mask: Number }"
+            maxLength="10"
             :class="{
               invalidpass: autoArrayState.notEnoughData === true
             }"
@@ -43,15 +47,24 @@
           <MyInput
             v-model="signState.phoneNum"
             required
-            @input="signState.phoneAddPlus()"
+            v-imask="{ mask: '+7(000) 000-0000', lazy: true }"
             :class="{
               validpass: signState.checkValidePhone,
               invalidpass: signState.checkValidePhone === false
             }"
-            maxlength="12"
+            maxlength="16"
+            @input="console.log(signState.phoneNum)"
           ></MyInput>
         </div>
-        <MyButton @click="handleClick()">Разместить</MyButton>
+        <MyButton
+          @click="
+            autoArrayState.newItem(carModel, carPrice, carMileage, signState.phoneNum),
+              autoArrayState.setCarsArray,
+              signState.startCheckValid(),
+              checkBeforeClose()
+          "
+          >Разместить</MyButton
+        >
       </div>
     </div>
   </MyModal>
@@ -63,7 +76,6 @@ import MySelect from '@/UI/MySelect.vue'
 import MyButton from '@/UI/MyButton.vue'
 import MyModal from './MyModal.vue'
 import { onMounted, ref } from 'vue'
-
 import { autoArrayStore } from '@/stores/auto_array'
 import { signStore } from '@/stores/signin'
 import { modalStore } from '@/stores/modal'
@@ -80,12 +92,12 @@ const carPhoto = ref()
 const checkBeforeClose = () => {
   autoArrayState.notEnoughData ? 0 : modalState.modalClose()
 }
-const handleClick = () => {
-  autoArrayState.newItem(carModel, carPrice, carMileage, signState.phoneNum),
-    autoArrayState.setCarsArray,
-    signState.startCheckValid(),
-    checkBeforeClose()
-}
+// const handleClick = () => {
+//   autoArrayState.newItem(carModel, carPrice, carMileage, signState.phoneNum),
+//     autoArrayState.setCarsArray,
+//     signState.startCheckValid(),
+//     checkBeforeClose()
+// }
 onMounted(() => {
   autoArrayState.sortCars
 })

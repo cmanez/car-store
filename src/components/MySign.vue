@@ -66,12 +66,13 @@
           <MyInput
             v-model="signState.phoneNum"
             required
-            @input="signState.phoneAddPlus()"
+            v-imask="{ mask: '+7(000) 000-0000', lazy: true }"
             :class="{
               validpass: signState.checkValidePhone,
               invalidpass: signState.checkValidePhone === false
             }"
-            maxlength="12"
+            maxlength="16"
+            @input="console.log(signState.phoneNum)"
           ></MyInput>
         </div>
       </div>

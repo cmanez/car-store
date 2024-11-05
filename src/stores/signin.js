@@ -25,12 +25,6 @@ export const signStore = defineStore('sign', () => {
     clickToCheck.value = true
   } // для запуска проверки полей на валидность
 
-  const phoneAddPlus = () => {
-    if (phoneNum.value.indexOf('+') === -1) {
-      phoneNum.value = '+7' + phoneNum.value
-    } // "+7" при каждом вводе номера
-  }
-
   const checkConfirmPassword = computed(() => {
     if (clickToCheck.value && password.value && confirmPassword.value) {
       password.value === confirmPassword.value
@@ -73,7 +67,6 @@ export const signStore = defineStore('sign', () => {
     phoneNum,
     clickToCheck,
     startCheckValid,
-    phoneAddPlus,
     checkFieldsValues
   }
 })
