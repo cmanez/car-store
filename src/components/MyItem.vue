@@ -39,8 +39,8 @@ const autoArrayState = autoArrayStore()
   flex-direction: column;
   justify-content: flex-end;
   flex-grow: 1;
-  border: solid 1px rgb(184, 127, 127);
-  border-radius: 10px;
+  // border: solid 1px rgb(184, 127, 127);
+  // border-radius: 10px;
   background-color: $main-light;
   transition: 0.2s;
   .test_wrapper {

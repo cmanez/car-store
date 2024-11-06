@@ -27,8 +27,7 @@ export const autoArrayStore = defineStore('auto', () => {
 
   const newItem = (model, price, mileage, phoneNum) => {
     //создание элемента массива
-
-    if (model && price && mileage && phoneNum) {
+    if (model && price && mileage && phoneNum.length === 16) {
       const id = Date.now()
       itemCarArray.value.push({ model, price, mileage, id, phoneNum })
       notEnoughData.value = false
