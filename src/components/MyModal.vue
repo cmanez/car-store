@@ -1,16 +1,22 @@
 <template>
-  <div class="wrapper-modal">
-    <div class="background" @click="modalState.modalClose"></div>
-    <div class="modal">
-      <img
-        @click="modalState.modalClose"
-        src="../assets/close.svg"
-        alt=""
-        class="modal_close-item"
-      />
-      <slot></slot>
+  <Transition>
+    <div
+      v-if="modalState.modalName === 'sell'"
+      class="wrapper-modal"
+      @click="console.log(modalState.modalName)"
+    >
+      <div class="background" @click="modalState.modalClose"></div>
+      <div class="modal">
+        <img
+          @click="modalState.modalClose"
+          src="../assets/close.svg"
+          alt=""
+          class="modal_close-item"
+        />
+        <slot></slot>
+      </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script setup>
@@ -20,9 +26,19 @@ const modalState = modalStore()
 </script>
 
 <style lang="scss" scoped>
-.modal_none {
-  display: none;
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
 }
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 1s;
+}
+// .modal_none {
+//   transition: display 10s;
+//   display: none;
+// }
 .wrapper-modal {
   position: absolute;
   width: 100%;
@@ -36,14 +52,13 @@ const modalState = modalStore()
   }
   .modal {
     position: absolute;
+    transition: 10s;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     height: 30rem;
     width: 25rem;
     background-color: $main-light;
-    border: solid 1px rgb(184, 127, 127);
-    border-radius: 10px;
     padding: 1rem;
     &_close-item {
       position: absolute;

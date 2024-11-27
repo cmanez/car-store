@@ -6,8 +6,12 @@
 const model = defineModel({})
 </script>
 
-<style>
+<style lang="scss">
 input {
   width: 100%;
+  background-color: $items-gray;
+  border: none;
+  padding: 5px 8px;
+  outline: none;
 }
 </style>

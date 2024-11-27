@@ -6,12 +6,12 @@
           Продайте свой автомобиль, оставив объявление
         </div>
         <div class="sell_car-option">
-          Загрузите фото
+          <span class="sell_car-option_descr">Загрузите фото</span>
           <MyInput type="file" v-model="carPhoto"></MyInput>
         </div>
         <div v-if="autoArrayState.checkArrayLength === false">Загрузка...</div>
         <div v-else class="sell_car-option">
-          Модель автомобиля:
+          <span class="sell_car-option_descr">Модель автомобиля:</span>
           <MySelect v-model="carModel"
             ><option value="" disabled selected>Выберите марку:</option>
 
@@ -21,7 +21,8 @@
           </MySelect>
         </div>
         <div class="sell_car-option">
-          Пробег (км):
+          <span class="sell_car-option_descr">Пробег (км):</span>
+
           <MyInput
             v-model="carMileage"
             v-imask="{ mask: Number }"
@@ -32,7 +33,7 @@
           ></MyInput>
         </div>
         <div class="sell_car-option">
-          Цена (в рублях):
+          <span class="sell_car-option_descr">Цена (в рублях):</span>
           <MyInput
             v-model="carPrice"
             v-imask="{ mask: Number }"
@@ -43,7 +44,7 @@
           ></MyInput>
         </div>
         <div class="sell_car-option">
-          Контактный номер телефона:
+          <span class="sell_car-option_descr">Контактный номер телефона:</span>
           <MyInput
             v-model="signState.phoneNum"
             required
@@ -123,12 +124,11 @@ onMounted(() => {
   height: 100%;
   &_car-option {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    &-car {
-      height: 100px;
-      width: 100px;
+    &_descr {
+      width: 80%;
+      padding-right: 2rem;
     }
   }
 }

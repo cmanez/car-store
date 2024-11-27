@@ -9,8 +9,15 @@ import { defineModel } from 'vue'
 const model = defineModel({})
 </script>
 
-<style>
-.select {
+<style lang="scss">
+select {
   width: 100%;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: $items-gray;
 }
+/* .select {
+  width: 100%;
+} */
 </style>
