@@ -1,6 +1,8 @@
 # car-store
+Before check this project, please, read discription under this message
 
-This template should help get you started developing with Vue 3 in Vite.
+This project is not completely finished. Need to do adaptive for mobile devices and fix couple of html code structure troubles(!!)
+
 
 ## Recommended IDE Setup
 
